@@ -1630,44 +1630,44 @@ namespace TempDataTool
             //
             // ---- doing ASGADStations
             //
-            lblStatus.Text = "Cleaning PE Stations  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADStations("PE");
-            lblStatus.Text = "Cleaning PE Stations done  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning PE Stations  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADStations("PE");
+            //lblStatus.Text = "Cleaning PE Stations done  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            lblStatus.Text = "LoadASGADStation PE  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            LoadASGADStation("PE");
-            lblStatus.Text = "LoadASGADStation PE done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "LoadASGADStation PE  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //LoadASGADStation("PE");
+            //lblStatus.Text = "LoadASGADStation PE done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
             //
             // ---- doing ASGADRuns
             //
-            lblStatus.Text = "Cleaning PE Runs  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADRuns("PE");
-            lblStatus.Text = "Cleaning PE Runs done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning PE Runs  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADRuns("PE");
+            //lblStatus.Text = "Cleaning PE Runs done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            lblStatus.Text = "LoadASGADRuns PE  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            LoadASGADRun("PE");
-            lblStatus.Text = "LoadASGADRuns PE done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "LoadASGADRuns PE  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //LoadASGADRun("PE");
+            //lblStatus.Text = "LoadASGADRuns PE done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            ////
-            //// ---- doing ASGADPrecDatas
-            ////
+            //
+            // ---- doing ASGADPrecDatas
+            //
             //lblStatus.Text = "Cleaning PE Prec data  ...";
             //lblStatus.Refresh();
             //Application.DoEvents();
@@ -1688,13 +1688,13 @@ namespace TempDataTool
             //
             // ---- doing ASGAD PESamples
             //
-            lblStatus.Text = "Cleaning PE Samples ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADSamples("PE");
-            lblStatus.Text = "Cleaning PE Samples Done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning PE Samples ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADSamples("PE");
+            //lblStatus.Text = "Cleaning PE Samples Done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
             lblStatus.Text = "LoadASGADSample PE ...";
             lblStatus.Refresh();
@@ -2526,7 +2526,7 @@ namespace TempDataTool
         {
             List<ASGADPrecData> asgadPrecDataList = new List<ASGADPrecData>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -2816,7 +2816,7 @@ namespace TempDataTool
         {
             List<ASGADRun> asgadRunList = new List<ASGADRun>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3437,7 +3437,7 @@ namespace TempDataTool
         {
             List<ASGADSample> asgadSampleList = new List<ASGADSample>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3847,7 +3847,7 @@ namespace TempDataTool
         {
             List<ASGADStation> asgadStationList = new List<ASGADStation>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
