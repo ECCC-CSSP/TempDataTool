@@ -4394,7 +4394,7 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land Based Sample Reading]", conn);
@@ -4405,7 +4405,7 @@ namespace TempDataTool
             FieldNameList = new List<string>() { "ID", "SR_SURVEY", "SR_STATION_CODE", "SR_STATION_TYPE",
                 "SR_ANALYSIS_TYPE", "SR_READING_DATE", "SR_READING_TIME", "SR_SAMPLE_TYPE", "SR_FECAL_COLIFORM_IND",
                 "SR_FECAL_COLIFORM", "SR_ENTEROCOCCI_IND", "SR_ENTEROCOCCI", "SR_FLOW", "SR_SAMPLE_AGENCY",
-                "SR_OLD_KEY", "SR_SAMPLE_DEPTH", "SR_SALINITY", "SR_TEMPERATURE", "SR_TIDE_CODE", "SR_OBS" };
+                "SR_OLD_KEY" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -4579,51 +4579,7 @@ namespace TempDataTool
                     SR_OLD_KEY = reader.GetValue(14).ToString().Trim();
                 }
 
-                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
-                {
-                    SR_SAMPLE_DEPTH = null;
-                }
-                else
-                {
-                    SR_SAMPLE_DEPTH = (float)(double)(reader.GetValue(15));
-                }
-
-                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
-                {
-                    SR_SALINITY = null;
-                }
-                else
-                {
-                    SR_SALINITY = (float)(double)(reader.GetValue(16));
-                }
-
-                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
-                {
-                    SR_TEMPERATURE = null;
-                }
-                else
-                {
-                    SR_TEMPERATURE = (float)(double)(reader.GetValue(17));
-                }
-
-                if (reader.GetValue(18).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(18).ToString()))
-                {
-                    SR_TIDE_CODE = null;
-                }
-                else
-                {
-                    SR_TIDE_CODE = reader.GetValue(18).ToString().Trim();
-                }
-
-                if (reader.GetValue(19).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(19).ToString()))
-                {
-                    SR_OBS = null;
-                }
-                else
-                {
-                    SR_OBS = reader.GetValue(19).ToString().Trim();
-                }
-
+               
 
                 BCLandSample bcLandSampleNew = new BCLandSample();
                 bcLandSampleNew.ID = ID;
@@ -4678,7 +4634,7 @@ namespace TempDataTool
         {
             List<BCLandSampleStation> bcLandSampleStationList = new List<BCLandSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Station]", conn);
@@ -4984,7 +4940,7 @@ namespace TempDataTool
         {
             List<BCMarineSample> bcMarineSampleList = new List<BCMarineSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine Sample Reading]", conn);
@@ -4992,7 +4948,7 @@ namespace TempDataTool
 
             List<string> FieldNameList = new List<string>();
 
-            FieldNameList = new List<string>() { "SR_SURVEY", "SR_STATION_CODE",
+            FieldNameList = new List<string>() { "OID", "SR_SURVEY", "SR_STATION_CODE",
                 "SR_ANALYSIS_TYPE", "SR_READING_DATE", "SR_READING_TIME", "SR_SAMPLE_TYPE", "SR_SAMPLE_DEPTH",
                 "SR_FECAL_COLIFORM_IND", "SR_FECAL_COLIFORM", "SR_ENTEROCOCCI_IND", "SR_ENTEROCOCCI",
                 "SR_SALINITY", "SR_TEMPERATURE", "SR_TURBIDITY", "SR_TIDE_CODE", "SR_SPECIES", "SR_SAMPLE_AGENCY", "SR_OBS" };
@@ -5013,6 +4969,7 @@ namespace TempDataTool
                 Count += 1;
                 Application.DoEvents();
 
+                int? OID = -1;
                 int? SR_SURVEY = -1;
                 string SR_STATION_CODE = "";
                 string SR_ANALYSIS_TYPE = "";
@@ -5034,164 +4991,173 @@ namespace TempDataTool
 
                 if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
                 {
+                    OID = null;
+                }
+                else
+                {
+                    OID = (int)(reader.GetValue(0));
+                }
+
+                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                {
                     SR_SURVEY = null;
                 }
                 else
                 {
-                    SR_SURVEY = (int)(Int16)(reader.GetValue(0));
+                    SR_SURVEY = (int)(Int16)(reader.GetValue(1));
                 }
 
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
                 {
                     SR_STATION_CODE = null;
                 }
                 else
                 {
-                    SR_STATION_CODE = reader.GetValue(1).ToString().Trim();
+                    SR_STATION_CODE = reader.GetValue(2).ToString().Trim();
                 }
 
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
                 {
                     SR_ANALYSIS_TYPE = null;
                 }
                 else
                 {
-                    SR_ANALYSIS_TYPE = reader.GetValue(2).ToString().Trim();
+                    SR_ANALYSIS_TYPE = reader.GetValue(3).ToString().Trim();
                 }
 
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
                 {
                     SR_READING_DATE = new DateTime(2030, 1, 1);
                 }
                 else
                 {
-                    SR_READING_DATE = (DateTime)(reader.GetValue(3));
+                    SR_READING_DATE = (DateTime)(reader.GetValue(4));
                 }
 
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
                 {
                     SR_READING_TIME = null;
                 }
                 else
                 {
-                    SR_READING_TIME = reader.GetValue(4).ToString().Trim();
+                    SR_READING_TIME = reader.GetValue(5).ToString().Trim();
                 }
 
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
                 {
                     SR_SAMPLE_TYPE = null;
                 }
                 else
                 {
-                    SR_SAMPLE_TYPE = reader.GetValue(5).ToString().Trim();
+                    SR_SAMPLE_TYPE = reader.GetValue(6).ToString().Trim();
                 }
 
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
                 {
                     SR_SAMPLE_DEPTH = null;
                 }
                 else
                 {
-                    SR_SAMPLE_DEPTH = (float)(reader.GetValue(6));
+                    SR_SAMPLE_DEPTH = (float)(reader.GetValue(7));
                 }
 
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
                 {
                     SR_FECAL_COLIFORM_IND = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM_IND = reader.GetValue(7).ToString().Trim();
+                    SR_FECAL_COLIFORM_IND = reader.GetValue(8).ToString().Trim();
                 }
 
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
                 {
                     SR_FECAL_COLIFORM = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM = (int)(reader.GetValue(8));
+                    SR_FECAL_COLIFORM = (int)(reader.GetValue(9));
                 }
 
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
+                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
                 {
                     SR_ENTEROCOCCI_IND = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI_IND = reader.GetValue(9).ToString().Trim();
+                    SR_ENTEROCOCCI_IND = reader.GetValue(10).ToString().Trim();
                 }
 
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
                 {
                     SR_ENTEROCOCCI = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI = (int)(reader.GetValue(10));
+                    SR_ENTEROCOCCI = (int)(reader.GetValue(11));
                 }
 
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
                 {
                     SR_SALINITY = null;
                 }
                 else
                 {
-                    SR_SALINITY = (float)(reader.GetValue(11));
+                    SR_SALINITY = (float)(reader.GetValue(12));
                 }
 
-                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
+                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
                 {
                     SR_TEMPERATURE = null;
                 }
                 else
                 {
-                    SR_TEMPERATURE = (float)(reader.GetValue(12));
+                    SR_TEMPERATURE = (float)(reader.GetValue(13));
                 }
 
-                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
+                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
                 {
                     SR_TURBIDITY = null;
                 }
                 else
                 {
-                    SR_TURBIDITY = (float)(reader.GetValue(13));
+                    SR_TURBIDITY = (float)(reader.GetValue(14));
                 }
 
-                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
+                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
                 {
                     SR_TIDE_CODE = null;
                 }
                 else
                 {
-                    SR_TIDE_CODE = reader.GetValue(14).ToString().Trim();
+                    SR_TIDE_CODE = reader.GetValue(15).ToString().Trim();
                 }
 
-                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
+                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
                 {
                     SR_SPECIES = null;
                 }
                 else
                 {
-                    SR_SPECIES = reader.GetValue(15).ToString().Trim();
+                    SR_SPECIES = reader.GetValue(16).ToString().Trim();
                 }
 
-                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
+                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
                 {
                     SR_SAMPLE_AGENCY = null;
                 }
                 else
                 {
-                    SR_SAMPLE_AGENCY = (int)(Int16)(reader.GetValue(16));
+                    SR_SAMPLE_AGENCY = (int)(Int16)(reader.GetValue(17));
                 }
 
-                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
+                if (reader.GetValue(18).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(18).ToString()))
                 {
                     SR_OBS = null;
                 }
                 else
                 {
-                    SR_OBS = reader.GetValue(17).ToString().Trim();
+                    SR_OBS = reader.GetValue(18).ToString().Trim();
                 }
 
 
@@ -5246,7 +5212,7 @@ namespace TempDataTool
         {
             List<BCMarineSampleStation> bcMarineSampleStationList = new List<BCMarineSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Station]", conn);
@@ -5300,7 +5266,7 @@ namespace TempDataTool
                 }
                 else
                 {
-                    OID = (int)(double)(reader.GetValue(0));
+                    OID = (int)(reader.GetValue(0));
                 }
 
                 if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
@@ -5766,7 +5732,7 @@ namespace TempDataTool
         {
             List<BCSurvey> bcSurveyList = new List<BCSurvey>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Survey]", conn);
@@ -5982,7 +5948,7 @@ namespace TempDataTool
 
             List<BCPrecipitation> bcPrecList = new List<BCPrecipitation>();
 
-            conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\BC_Data\ssdb3_pyr_20131114.accdb");
+            conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             cmd = new OleDbCommand("SELECT * FROM [Weather Reading]", conn);
