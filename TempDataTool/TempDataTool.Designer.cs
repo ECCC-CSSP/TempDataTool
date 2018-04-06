@@ -32,6 +32,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.butLoadASGADNS = new System.Windows.Forms.Button();
             this.butLoadASGADPE = new System.Windows.Forms.Button();
+            this.butLoadASGADNBMOU = new System.Windows.Forms.Button();
             this.butLoadASGADNB = new System.Windows.Forms.Button();
             this.butLoadASGADNL = new System.Windows.Forms.Button();
             this.butAddInspectorNames = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.butLoadNomenclature = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timerSanitary = new System.Windows.Forms.Timer(this.components);
-            this.butLoadASGADNBMOU = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,6 +132,16 @@
             this.butLoadASGADPE.Text = "Load ASGAD PE";
             this.butLoadASGADPE.UseVisualStyleBackColor = true;
             this.butLoadASGADPE.Click += new System.EventHandler(this.butLoadASGADPE_Click);
+            // 
+            // butLoadASGADNBMOU
+            // 
+            this.butLoadASGADNBMOU.Location = new System.Drawing.Point(480, 218);
+            this.butLoadASGADNBMOU.Name = "butLoadASGADNBMOU";
+            this.butLoadASGADNBMOU.Size = new System.Drawing.Size(197, 25);
+            this.butLoadASGADNBMOU.TabIndex = 23;
+            this.butLoadASGADNBMOU.Text = "Load ASGAD NB MOU";
+            this.butLoadASGADNBMOU.UseVisualStyleBackColor = true;
+            this.butLoadASGADNBMOU.Click += new System.EventHandler(this.butLoadASGADNBMOU_Click);
             // 
             // butLoadASGADNB
             // 
@@ -403,16 +413,6 @@
             // 
             this.timerSanitary.Interval = 5000;
             this.timerSanitary.Tick += new System.EventHandler(this.timerSanitary_Tick);
-            // 
-            // butLoadASGADNBMOU
-            // 
-            this.butLoadASGADNBMOU.Location = new System.Drawing.Point(480, 218);
-            this.butLoadASGADNBMOU.Name = "butLoadASGADNBMOU";
-            this.butLoadASGADNBMOU.Size = new System.Drawing.Size(197, 25);
-            this.butLoadASGADNBMOU.TabIndex = 23;
-            this.butLoadASGADNBMOU.Text = "Load ASGAD NB MOU";
-            this.butLoadASGADNBMOU.UseVisualStyleBackColor = true;
-            this.butLoadASGADNBMOU.Click += new System.EventHandler(this.butLoadASGADNBMOU_Click);
             // 
             // TempDataTool
             // 

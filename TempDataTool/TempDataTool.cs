@@ -1546,44 +1546,44 @@ namespace TempDataTool
             //
             // ---- doing ASGADStations
             //
-            lblStatus.Text = "Cleaning NS Stations  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADStations("NS");
-            lblStatus.Text = "Cleaning NS Stations done  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning NS Stations  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADStations("NS");
+            //lblStatus.Text = "Cleaning NS Stations done  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            lblStatus.Text = "LoadASGADStation NS  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            LoadASGADStation("NS");
-            lblStatus.Text = "LoadASGADStation NS done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "LoadASGADStation NS  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //LoadASGADStation("NS");
+            //lblStatus.Text = "LoadASGADStation NS done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
             //
             // ---- doing ASGADRuns
             //
-            lblStatus.Text = "Cleaning NS Runs  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADRuns("NS");
-            lblStatus.Text = "Cleaning NS Runs done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning NS Runs  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADRuns("NS");
+            //lblStatus.Text = "Cleaning NS Runs done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            lblStatus.Text = "LoadASGADRuns NS  ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            LoadASGADRun("NS");
-            lblStatus.Text = "LoadASGADRuns NS done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "LoadASGADRuns NS  ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //LoadASGADRun("NS");
+            //lblStatus.Text = "LoadASGADRuns NS done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            ////
-            //// ---- doing ASGADPrecDatas
-            ////
+            //
+            // ---- doing ASGADPrecDatas
+            //
             //lblStatus.Text = "Cleaning NS Prec data  ...";
             //lblStatus.Refresh();
             //Application.DoEvents();
@@ -1604,21 +1604,21 @@ namespace TempDataTool
             //
             // ---- doing ASGAD NSSamples
             //
-            lblStatus.Text = "Cleaning NS Samples ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            CleanASGADSamples("NS");
-            lblStatus.Text = "Cleaning NS Samples Done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "Cleaning NS Samples ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //CleanASGADSamples("NS");
+            //lblStatus.Text = "Cleaning NS Samples Done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
-            lblStatus.Text = "LoadASGADSample NS ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
-            LoadASGADSample("NS");
-            lblStatus.Text = "LoadASGADSample NS done ...";
-            lblStatus.Refresh();
-            Application.DoEvents();
+            //lblStatus.Text = "LoadASGADSample NS ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
+            //LoadASGADSample("NS");
+            //lblStatus.Text = "LoadASGADSample NS done ...";
+            //lblStatus.Refresh();
+            //Application.DoEvents();
 
             //richTextBox1.AppendText(DateTime.Now + "\r\n");
 
@@ -7916,7 +7916,5 @@ namespace TempDataTool
                 }
             }
         }
-
-      
     }
 }
