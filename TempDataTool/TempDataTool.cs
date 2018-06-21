@@ -2429,7 +2429,7 @@ namespace TempDataTool
         {
             List<ASGADMPNTable> asgadMPNTableList = new List<ASGADMPNTable>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -2526,7 +2526,7 @@ namespace TempDataTool
         {
             List<ASGADPrecData> asgadPrecDataList = new List<ASGADPrecData>();
 
-            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -2654,7 +2654,7 @@ namespace TempDataTool
         {
             List<ASGADPrecStn> asgadPrecStnList = new List<ASGADPrecStn>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -2816,7 +2816,7 @@ namespace TempDataTool
         {
             List<ASGADRun> asgadRunList = new List<ASGADRun>();
 
-            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3067,7 +3067,7 @@ namespace TempDataTool
         {
             List<ASGADRunMOU> asgadRunMOUList = new List<ASGADRunMOU>();
 
-            string dirName = @"C:\CSSP Latest Code Old\DataTool\NBMOUDATA\" + Prov + @"\";
+            string dirName = @"E:\CSSP Latest Code Old\DataTool\NBMOUDATA\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3318,7 +3318,7 @@ namespace TempDataTool
         {
             List<ASGADSampCode> asgadSampCodeList = new List<ASGADSampCode>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3437,7 +3437,7 @@ namespace TempDataTool
         {
             List<ASGADSample> asgadSampleList = new List<ASGADSample>();
 
-            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3642,7 +3642,7 @@ namespace TempDataTool
         {
             List<ASGADSampleMOU> asgadSampleMOUList = new List<ASGADSampleMOU>();
 
-            string dirName = @"C:\CSSP Latest Code Old\DataTool\NBMOUDATA\" + Prov + @"\";
+            string dirName = @"E:\CSSP Latest Code Old\DataTool\NBMOUDATA\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -3847,7 +3847,7 @@ namespace TempDataTool
         {
             List<ASGADStation> asgadStationList = new List<ASGADStation>();
 
-            string dirName = @"C:\CSSP\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\CSSP\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -4085,7 +4085,7 @@ namespace TempDataTool
         {
             List<ASGADSubsect> asgadSubsectList = new List<ASGADSubsect>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -4296,7 +4296,7 @@ namespace TempDataTool
 
             List<ASGADTide> asgadTideList = new List<ASGADTide>();
 
-            string dirName = @"C:\ASGAD Data\" + Prov + @"\";
+            string dirName = @"E:\ASGAD Data\" + Prov + @"\";
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0; Data Source=" + dirName + "; Extended Properties=DBASE III;";
             OleDbConnection conn = new OleDbConnection(connectionString);
@@ -4394,7 +4394,7 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land Based Sample Reading]", conn);
@@ -4634,7 +4634,7 @@ namespace TempDataTool
         {
             List<BCLandSampleStation> bcLandSampleStationList = new List<BCLandSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Station]", conn);
@@ -4940,7 +4940,7 @@ namespace TempDataTool
         {
             List<BCMarineSample> bcMarineSampleList = new List<BCMarineSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine Sample Reading]", conn);
@@ -5212,7 +5212,7 @@ namespace TempDataTool
         {
             List<BCMarineSampleStation> bcMarineSampleStationList = new List<BCMarineSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Station]", conn);
@@ -5474,7 +5474,7 @@ namespace TempDataTool
         {
             List<BCPolSource> bcPolSourceList = new List<BCPolSource>();
 
-            FileInfo fi = new FileInfo(@"C:\BC_Data\PSI_20130626.xls");
+            FileInfo fi = new FileInfo(@"E:\BC_Data\PSI_20130626.xls");
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0;Data Source=" + fi.FullName + ";Extended Properties=Excel 8.0;";
 
@@ -5732,7 +5732,7 @@ namespace TempDataTool
         {
             List<BCSurvey> bcSurveyList = new List<BCSurvey>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Survey]", conn);
@@ -5871,7 +5871,7 @@ namespace TempDataTool
             List<BCClimateSite> bcClimateSiteList = new List<BCClimateSite>();
 
             // reading all distinct weather station
-            FileInfo fi = new FileInfo(@"C:\BC_Data\ClimateSiteBC.xls");
+            FileInfo fi = new FileInfo(@"E:\BC_Data\ClimateSiteBC.xls");
 
             string connectionString = @"Provider=Microsoft.Jet.OleDb.4.0;Data Source=" + fi.FullName + ";Extended Properties=Excel 8.0;";
 
@@ -5948,7 +5948,7 @@ namespace TempDataTool
 
             List<BCPrecipitation> bcPrecList = new List<BCPrecipitation>();
 
-            conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=C:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             cmd = new OleDbCommand("SELECT * FROM [Weather Reading]", conn);
@@ -6173,7 +6173,7 @@ namespace TempDataTool
                 dbDT.Database.ExecuteSqlCommand("DELETE TOP (10000) FROM Nomenclature");
                 dbDT.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Nomenclature', RESEED, 0)");
 
-                string connStrNomenclature = @"Provider=Microsoft.Jet.OleDb.4.0;Data Source=C:\DataTool\ImportDB\Locator Nomenclature.xls;Extended Properties=Excel 8.0;";
+                string connStrNomenclature = @"Provider=Microsoft.Jet.OleDb.4.0;Data Source=E:\DataTool\ImportDB\Locator Nomenclature.xls;Extended Properties=Excel 8.0;";
 
                 Application.DoEvents();
 
@@ -6279,7 +6279,7 @@ namespace TempDataTool
         }
         private void LoadSanitaryDon(string Prov)
         {
-            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\CSSP\sanitary.mdb");
+            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\CSSP\sanitary.mdb");
             co.Open();
 
             //List<string> ProvList = new List<string>() { "PEI" };
@@ -6629,7 +6629,7 @@ namespace TempDataTool
         }
         private void LoadSanitaryPatrice()
         {
-            string StartDirName = @"C:\Sanitary_Excel_Patrice\";
+            string StartDirName = @"E:\Sanitary_Excel_Patrice\";
 
             DirectoryInfo di = new DirectoryInfo(StartDirName);
 
@@ -6647,7 +6647,7 @@ namespace TempDataTool
         }
         private void LoadSanitaryDav(string Prov)
         {
-            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\CSSP\sanitary_Ryan.mdb");
+            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\CSSP\sanitary_Ryan.mdb");
             co.Open();
 
             List<SanitaryDavOb> obList = new List<SanitaryDavOb>();
@@ -6983,7 +6983,7 @@ namespace TempDataTool
         }
         private void LoadSanitaryJoe(string Prov)
         {
-            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\CSSP\sanitary_Joe.mdb");
+            OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\CSSP\sanitary_Joe.mdb");
             co.Open();
 
             List<SanitaryJoeOb> obList = new List<SanitaryJoeOb>();
@@ -7253,7 +7253,7 @@ namespace TempDataTool
         private void LoadSanitaryDaveC()
         {
 
-            FileInfo fi = new FileInfo(@"C:\CSSP\CSSPWebTools_docs_and_templates\San Data NL 02-04-2015.xlsx");
+            FileInfo fi = new FileInfo(@"E:\CSSP\CSSPWebTools_docs_and_templates\San Data NL 02-04-2015.xlsx");
 
             if (!fi.Exists)
             {
@@ -7481,7 +7481,7 @@ namespace TempDataTool
             {
                 List<SanitaryPatSite> sitePatList = new List<SanitaryPatSite>();
 
-                string FileName = @"C:\DataTool\ImportDB\QC Climate Sites.xlsx";
+                string FileName = @"E:\DataTool\ImportDB\QC Climate Sites.xlsx";
                 string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
                 OleDbConnection conn = new OleDbConnection(connectionString);
 
@@ -7579,7 +7579,7 @@ namespace TempDataTool
             {
                 List<SanitaryPatSite> sitePatList = new List<SanitaryPatSite>();
 
-                string FileName = @"C:\DataTool\ImportDB\BC Zone_GrowingArea_Sector_List_20140422.xlsx";
+                string FileName = @"E:\DataTool\ImportDB\BC Zone_GrowingArea_Sector_List_20140422.xlsx";
                 string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties=Excel 12.0";
                 OleDbConnection conn = new OleDbConnection(connectionString);
 
