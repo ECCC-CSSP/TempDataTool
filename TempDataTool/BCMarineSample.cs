@@ -15,6 +15,7 @@ namespace TempDataTool
     public partial class BCMarineSample
     {
         public int BCMarineSampleID { get; set; }
+        public Nullable<int> OID { get; set; }
         public Nullable<int> SR_SURVEY { get; set; }
         public string SR_STATION_CODE { get; set; }
         public string SR_ANALYSIS_TYPE { get; set; }
@@ -33,5 +34,6 @@ namespace TempDataTool
         public string SR_SPECIES { get; set; }
         public Nullable<int> SR_SAMPLE_AGENCY { get; set; }
         public string SR_OBS { get; set; }
+        public string Pub { get; set; }
     }
 }

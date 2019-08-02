@@ -30,10 +30,6 @@ namespace TempDataTool
         public string SR_FLOW { get; set; }
         public Nullable<int> SR_SAMPLE_AGENCY { get; set; }
         public string SR_OLD_KEY { get; set; }
-        public Nullable<double> SR_SAMPLE_DEPTH { get; set; }
-        public Nullable<double> SR_SALINITY { get; set; }
-        public Nullable<double> SR_TEMPERATURE { get; set; }
-        public string SR_TIDE_CODE { get; set; }
-        public string SR_OBS { get; set; }
+        public string Pub { get; set; }
     }
 }

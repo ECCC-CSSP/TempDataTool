@@ -4394,10 +4394,10 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land Based Sample Reading]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Reading]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
@@ -4405,7 +4405,7 @@ namespace TempDataTool
             FieldNameList = new List<string>() { "ID", "SR_SURVEY", "SR_STATION_CODE", "SR_STATION_TYPE",
                 "SR_ANALYSIS_TYPE", "SR_READING_DATE", "SR_READING_TIME", "SR_SAMPLE_TYPE", "SR_FECAL_COLIFORM_IND",
                 "SR_FECAL_COLIFORM", "SR_ENTEROCOCCI_IND", "SR_ENTEROCOCCI", "SR_FLOW", "SR_SAMPLE_AGENCY",
-                "SR_OLD_KEY" };
+                "SR_OLD_KEY", "Pub" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -4438,148 +4438,168 @@ namespace TempDataTool
                 string SR_FLOW = "";
                 int? SR_SAMPLE_AGENCY = -1;
                 string SR_OLD_KEY = "";
-                float? SR_SAMPLE_DEPTH = -1;
-                float? SR_SALINITY = -1;
-                float? SR_TEMPERATURE = -1;
-                string SR_TIDE_CODE = "";
-                string SR_OBS = "";
+                string Pub = "";
 
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+                int index = 0;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     ID = null;
                 }
                 else
                 {
-                    ID = (int)(reader.GetValue(0));
+                    ID = (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                index = 1;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SURVEY = null;
                 }
                 else
                 {
-                    SR_SURVEY = (int)(double)(reader.GetValue(1));
+                    SR_SURVEY = (int)(double)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+                index = 2;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_STATION_CODE = null;
                 }
                 else
                 {
-                    SR_STATION_CODE = reader.GetValue(2).ToString().Trim();
+                    SR_STATION_CODE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+                index = 3;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_STATION_TYPE = null;
                 }
                 else
                 {
-                    SR_STATION_TYPE = reader.GetValue(3).ToString().Trim();
+                    SR_STATION_TYPE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+                index = 4;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ANALYSIS_TYPE = null;
                 }
                 else
                 {
-                    SR_ANALYSIS_TYPE = reader.GetValue(4).ToString().Trim();
+                    SR_ANALYSIS_TYPE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+                index = 5;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_READING_DATE = new DateTime(2050, 1, 1);
                 }
                 else
                 {
-                    SR_READING_DATE = (DateTime)(reader.GetValue(5));
+                    SR_READING_DATE = (DateTime)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+                index = 6;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_READING_TIME = null;
                 }
                 else
                 {
-                    SR_READING_TIME = reader.GetValue(6).ToString().Trim();
+                    SR_READING_TIME = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+                index = 7;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SAMPLE_TYPE = null;
                 }
                 else
                 {
-                    SR_SAMPLE_TYPE = reader.GetValue(7).ToString().Trim();
+                    SR_SAMPLE_TYPE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+                index = 8;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_FECAL_COLIFORM_IND = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM_IND = reader.GetValue(8).ToString().Trim();
+                    SR_FECAL_COLIFORM_IND = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
+                index = 9;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_FECAL_COLIFORM = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM = (int)(double)(reader.GetValue(9));
+                    SR_FECAL_COLIFORM = (int)(double)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+                index = 10;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ENTEROCOCCI_IND = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI_IND = reader.GetValue(10).ToString().Trim();
+                    SR_ENTEROCOCCI_IND = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+                index = 11;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ENTEROCOCCI = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI = (int)(reader.GetValue(11));
+                    SR_ENTEROCOCCI = (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
+                index = 12;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_FLOW = null;
                 }
                 else
                 {
-                    SR_FLOW = reader.GetValue(12).ToString().Trim();
+                    SR_FLOW = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
+                index = 13;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SAMPLE_AGENCY = null;
                 }
                 else
                 {
-                    SR_SAMPLE_AGENCY = (int)(double)(reader.GetValue(13));
+                    SR_SAMPLE_AGENCY = (int)(double)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
+                index = 14;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_OLD_KEY = null;
                 }
                 else
                 {
-                    SR_OLD_KEY = reader.GetValue(14).ToString().Trim();
+                    SR_OLD_KEY = reader.GetValue(index).ToString().Trim();
                 }
 
-               
+                index = 15;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Pub = null;
+                }
+                else
+                {
+                    Pub = reader.GetValue(index).ToString().Trim();
+                }
+
 
                 BCLandSample bcLandSampleNew = new BCLandSample();
                 bcLandSampleNew.ID = ID;
@@ -4597,11 +4617,7 @@ namespace TempDataTool
                 bcLandSampleNew.SR_FLOW = SR_FLOW;
                 bcLandSampleNew.SR_SAMPLE_AGENCY = SR_SAMPLE_AGENCY;
                 bcLandSampleNew.SR_OLD_KEY = SR_OLD_KEY;
-                bcLandSampleNew.SR_SAMPLE_DEPTH = SR_SAMPLE_DEPTH;
-                bcLandSampleNew.SR_SALINITY = SR_SALINITY;
-                bcLandSampleNew.SR_TEMPERATURE = SR_TEMPERATURE;
-                bcLandSampleNew.SR_TIDE_CODE = SR_TIDE_CODE;
-                bcLandSampleNew.SR_OBS = SR_OBS;
+                bcLandSampleNew.Pub = Pub;
 
                 bcLandSampleList.Add(bcLandSampleNew);
             }
@@ -4634,18 +4650,19 @@ namespace TempDataTool
         {
             List<BCLandSampleStation> bcLandSampleStationList = new List<BCLandSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Station]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Landbased_SampSite_Pts]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
 
-            FieldNameList = new List<string>() { "OID", "SS_STATION_CODE",
-                "SS_DESCRIPTION", "SS_LATITUDE_DEGREES", "SS_LATITUDE_MINUTES", "SS_LONGITUDE_DEGREES", "SS_LONGITUDE_MINUTES",
-                "SS_SHELLFISH_SECTOR", "SS_DFO_SUBAREA", "SS_HARVEST_TYPE", "SS_STATUS",
-                "SS_REMOTE_STATUS", "SS_LASTUPDATE", "SS_ENTEREDBY", "LAT", "LON", "METADATA", "DATALINK", "SS_STATION_TYPE", "OLD_KEY", "OLD_KEY2", "QA" };
+            FieldNameList = new List<string>() { "OBJECTID", "Shape",
+                "GlobalID", "SS_STATION", "SS_DESCRIP", "SS_SHELLFI", "SS_DFO_SUB",
+                "SS_HARVEST", "SS_STATUS", "SS_REMOTE_", "SS_LASTUPD",
+                "SS_ENTERED", "LAT", "LON", "METADATA", "DATALINK", "LatDecMin",
+                "LonDecMin", "CreateDate", "ModifyDate", "Pub" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -4663,251 +4680,247 @@ namespace TempDataTool
                 Count += 1;
                 Application.DoEvents();
 
-                int? OID = -1;
-                string SS_STATION_CODE = "";
-                string SS_DESCRIPTION = "";
-                float? SS_LATITUDE_DEGREES = -1f;
-                float? SS_LATITUDE_MINUTES = -1f;
-                float? SS_LONGITUDE_DEGREES = -1f;
-                float? SS_LONGITUDE_MINUTES = -1f;
-                string SS_SHELLFISH_SECTOR = "";
-                string SS_DFO_SUBAREA = "";
-                string SS_HARVEST_TYPE = "";
-                string SS_STATUS = "";
-                string SS_REMOTE_STATUS = "";
-                DateTime SS_LASTUPDATE = new DateTime(2050, 1, 1);
-                string SS_ENTEREDBY = "";
-                float? LAT = -1f;
-                float? LON = -1f;
-                string METADATA = "";
-                string DATALINK = "";
-                string SS_STATION_TYPE = "";
-                string OLD_KEY = "";
-                string OLD_KEY2 = "";
-                string QA = "";
+                int? OBJECTID = -1; // 0
+                string Shape = null; // 1
+                int? GlobalID = -1; // 2
+                string SS_STATION = ""; // 3
+                string SS_DESCRIP = ""; // 4
+                string SS_SHELLFI = ""; // 5
+                float? SS_DFO_SUB = -1f; // 6
+                string SS_HARVEST = ""; // 7
+                string SS_STATUS = ""; //inactive or active // 8
+                string SS_REMOTE_ = ""; // 9
+                DateTime? SS_LASTUPD = new DateTime(2050, 1, 1); // 10
+                string SS_ENTERED = ""; // 11
+                float? LAT = -1f; // 12
+                float? LON = -1f; // 13
+                string METADATA = ""; // 14
+                string DATALINK = ""; // 15
+                string LatDecMin = ""; // 16
+                string LonDecMin = ""; // 17
+                DateTime? CreateDate = new DateTime(2050, 1, 1); // 18
+                DateTime? ModifyDate = new DateTime(2050, 1, 1); // 19 
+                string Pub = ""; // 20
 
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+                int index = 0;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    OID = null;
+                    OBJECTID = null;
                 }
                 else
                 {
-                    OID = (int)(reader.GetValue(0));
+                    OBJECTID = null; // (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                index = 1;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_STATION_CODE = null;
+                    Shape = null;
                 }
                 else
                 {
-                    SS_STATION_CODE = reader.GetValue(1).ToString().Trim();
+                    Shape = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+                index = 2;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_DESCRIPTION = null;
+                    GlobalID = null;
                 }
                 else
                 {
-                    SS_DESCRIPTION = reader.GetValue(2).ToString().Trim();
+                    GlobalID = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+                index = 3;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LATITUDE_DEGREES = null;
+                    SS_STATION = null;
                 }
                 else
                 {
-                    SS_LATITUDE_DEGREES = (float)(byte)(reader.GetValue(3));
+                    SS_STATION = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+                index = 4;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LATITUDE_MINUTES = null;
+                    SS_DESCRIP = null;
                 }
                 else
                 {
-                    SS_LATITUDE_MINUTES = (float)(reader.GetValue(4));
+                    SS_DESCRIP = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+                index = 5;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LONGITUDE_DEGREES = null;
+                    SS_SHELLFI = null;
                 }
                 else
                 {
-                    SS_LONGITUDE_DEGREES = (float)(byte)reader.GetValue(5);
+                    SS_SHELLFI = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+                index = 6;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LONGITUDE_MINUTES = null;
+                    SS_DFO_SUB = null;
                 }
                 else
                 {
-                    SS_LONGITUDE_MINUTES = (float)(reader.GetValue(6));
+                    SS_DFO_SUB = null; // (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+                index = 7;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_SHELLFISH_SECTOR = null;
+                    SS_HARVEST = null;
                 }
                 else
                 {
-                    SS_SHELLFISH_SECTOR = reader.GetValue(7).ToString().Trim();
+                    SS_HARVEST = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
-                {
-                    SS_DFO_SUBAREA = null;
-                }
-                else
-                {
-                    SS_DFO_SUBAREA = reader.GetValue(8).ToString().Trim();
-                }
-
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
-                {
-                    SS_HARVEST_TYPE = null;
-                }
-                else
-                {
-                    SS_HARVEST_TYPE = reader.GetValue(9).ToString().Trim();
-                }
-
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+                index = 8;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_STATUS = null;
                 }
                 else
                 {
-                    SS_STATUS = reader.GetValue(10).ToString().Trim();
+                    SS_STATUS = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+                index = 9;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_REMOTE_STATUS = null;
+                    SS_REMOTE_ = null;
                 }
                 else
                 {
-                    SS_REMOTE_STATUS = reader.GetValue(11).ToString().Trim();
+                    SS_REMOTE_ = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
+                index = 10;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LASTUPDATE = new DateTime(2050, 1, 1);
+                    SS_LASTUPD = null; // new DateTime(2050, 1, 1);
                 }
                 else
                 {
-                    SS_LASTUPDATE = (DateTime)(reader.GetValue(12));
+                    SS_LASTUPD = null; // (DateTime)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
+                index = 11;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_ENTEREDBY = null;
+                    SS_ENTERED = null;
                 }
                 else
                 {
-                    SS_ENTEREDBY = reader.GetValue(13).ToString().Trim();
+                    SS_ENTERED = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
+                index = 12;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LAT = null;
                 }
                 else
                 {
-                    LAT = (float)(double)reader.GetValue(14);
+                    LAT = (float)(double)reader.GetValue(index);
                 }
 
-                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
+                index = 13;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LON = null;
                 }
                 else
                 {
-                    LON = (float)(double)reader.GetValue(15);
+                    LON = (float)(double)reader.GetValue(index);
                 }
 
-                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
+                index = 14;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     METADATA = null;
                 }
                 else
                 {
-                    METADATA = reader.GetValue(16).ToString().Trim();
+                    METADATA = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
+                index = 15;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     DATALINK = null;
                 }
                 else
                 {
-                    DATALINK = reader.GetValue(17).ToString().Trim();
+                    DATALINK = null; // reader.GetValue(15).ToString().Trim();
                 }
 
-                if (reader.GetValue(18).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(18).ToString()))
+                index = 16;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_STATION_TYPE = null;
+                    LatDecMin = null;
                 }
                 else
                 {
-                    SS_STATION_TYPE = reader.GetValue(18).ToString().Trim();
+                    LatDecMin = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(19).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(19).ToString()))
+                index = 17;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    OLD_KEY = null;
+                    LonDecMin = null;
                 }
                 else
                 {
-                    OLD_KEY = reader.GetValue(19).ToString().Trim();
+                    LonDecMin = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(20).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(20).ToString()))
+                index = 18;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    DATALINK = null;
+                    CreateDate = null;
                 }
                 else
                 {
-                    OLD_KEY2 = reader.GetValue(20).ToString().Trim();
+                    CreateDate = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(21).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(21).ToString()))
+                index = 19;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    QA = null;
+                    ModifyDate = null;
                 }
                 else
                 {
-                    QA = reader.GetValue(21).ToString().Trim();
+                    ModifyDate = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 20;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Pub = null;
+                }
+                else
+                {
+                    Pub = reader.GetValue(index).ToString().Trim();
                 }
 
 
                 BCLandSampleStation bcLandSampleStationNew = new BCLandSampleStation();
-                bcLandSampleStationNew.OID = OID;
-                bcLandSampleStationNew.SS_STATION_CODE = SS_STATION_CODE;
-                bcLandSampleStationNew.SS_DESCRIPTION = SS_DESCRIPTION;
-                bcLandSampleStationNew.SS_LATITUDE_DEGREES = SS_LATITUDE_DEGREES;
-                bcLandSampleStationNew.SS_LATITUDE_MINUTES = SS_LATITUDE_MINUTES;
-                bcLandSampleStationNew.SS_LONGITUDE_DEGREES = SS_LONGITUDE_DEGREES;
-                bcLandSampleStationNew.SS_LONGITUDE_MINUTES = SS_LONGITUDE_MINUTES;
-                bcLandSampleStationNew.SS_SHELLFISH_SECTOR = SS_SHELLFISH_SECTOR;
-                bcLandSampleStationNew.SS_DFO_SUBAREA = SS_DFO_SUBAREA;
-                bcLandSampleStationNew.SS_HARVEST_TYPE = SS_HARVEST_TYPE;
+                bcLandSampleStationNew.SS_STATION = SS_STATION;
+                bcLandSampleStationNew.SS_DESCRIP = SS_DESCRIP;
+                bcLandSampleStationNew.SS_SHELLFI = SS_SHELLFI;
                 bcLandSampleStationNew.SS_STATUS = SS_STATUS;
-                bcLandSampleStationNew.SS_REMOTE_STATUS = SS_REMOTE_STATUS;
-                bcLandSampleStationNew.SS_LASTUPDATE = SS_LASTUPDATE;
-                bcLandSampleStationNew.SS_ENTEREDBY = SS_ENTEREDBY;
                 bcLandSampleStationNew.LAT = LAT;
                 bcLandSampleStationNew.LON = LON;
-                bcLandSampleStationNew.METADATA = METADATA;
-                bcLandSampleStationNew.DATALINK = DATALINK;
-                bcLandSampleStationNew.SS_STATION_TYPE = SS_STATION_TYPE;
-                bcLandSampleStationNew.OLD_KEY = OLD_KEY;
-                bcLandSampleStationNew.OLD_KEY2 = OLD_KEY2;
-                bcLandSampleStationNew.QA = QA;
+                bcLandSampleStationNew.Pub = Pub;
 
                 bcLandSampleStationList.Add(bcLandSampleStationNew);
             }
@@ -4940,10 +4953,10 @@ namespace TempDataTool
         {
             List<BCMarineSample> bcMarineSampleList = new List<BCMarineSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine Sample Reading]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Reading]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
@@ -4951,7 +4964,7 @@ namespace TempDataTool
             FieldNameList = new List<string>() { "OID", "SR_SURVEY", "SR_STATION_CODE",
                 "SR_ANALYSIS_TYPE", "SR_READING_DATE", "SR_READING_TIME", "SR_SAMPLE_TYPE", "SR_SAMPLE_DEPTH",
                 "SR_FECAL_COLIFORM_IND", "SR_FECAL_COLIFORM", "SR_ENTEROCOCCI_IND", "SR_ENTEROCOCCI",
-                "SR_SALINITY", "SR_TEMPERATURE", "SR_TURBIDITY", "SR_TIDE_CODE", "SR_SPECIES", "SR_SAMPLE_AGENCY", "SR_OBS" };
+                "SR_SALINITY", "SR_TEMPERATURE", "SR_TURBIDITY", "SR_TIDE_CODE", "SR_SPECIES", "SR_SAMPLE_AGENCY", "SR_OBS", "Pub" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -4988,176 +5001,206 @@ namespace TempDataTool
                 string SR_SPECIES = "";
                 int? SR_SAMPLE_AGENCY = -1;
                 string SR_OBS = "";
+                string Pub = "";
 
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+                int index = 0;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     OID = null;
                 }
                 else
                 {
-                    OID = (int)(reader.GetValue(0));
+                    OID = (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                index = 1;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SURVEY = null;
                 }
                 else
                 {
-                    SR_SURVEY = (int)(Int16)(reader.GetValue(1));
+                    SR_SURVEY = (int)(Int16)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+                index = 2;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_STATION_CODE = null;
                 }
                 else
                 {
-                    SR_STATION_CODE = reader.GetValue(2).ToString().Trim();
+                    SR_STATION_CODE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+                index = 3;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ANALYSIS_TYPE = null;
                 }
                 else
                 {
-                    SR_ANALYSIS_TYPE = reader.GetValue(3).ToString().Trim();
+                    SR_ANALYSIS_TYPE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+                index = 4;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_READING_DATE = new DateTime(2030, 1, 1);
                 }
                 else
                 {
-                    SR_READING_DATE = (DateTime)(reader.GetValue(4));
+                    SR_READING_DATE = (DateTime)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+                index = 5;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_READING_TIME = null;
                 }
                 else
                 {
-                    SR_READING_TIME = reader.GetValue(5).ToString().Trim();
+                    SR_READING_TIME = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+                index = 6;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SAMPLE_TYPE = null;
                 }
                 else
                 {
-                    SR_SAMPLE_TYPE = reader.GetValue(6).ToString().Trim();
+                    SR_SAMPLE_TYPE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+                index = 7;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SAMPLE_DEPTH = null;
                 }
                 else
                 {
-                    SR_SAMPLE_DEPTH = (float)(reader.GetValue(7));
+                    SR_SAMPLE_DEPTH = (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
+                index = 8;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_FECAL_COLIFORM_IND = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM_IND = reader.GetValue(8).ToString().Trim();
+                    SR_FECAL_COLIFORM_IND = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
+                index = 9;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_FECAL_COLIFORM = null;
                 }
                 else
                 {
-                    SR_FECAL_COLIFORM = (int)(reader.GetValue(9));
+                    SR_FECAL_COLIFORM = (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+                index = 10;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ENTEROCOCCI_IND = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI_IND = reader.GetValue(10).ToString().Trim();
+                    SR_ENTEROCOCCI_IND = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+                index = 11;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_ENTEROCOCCI = null;
                 }
                 else
                 {
-                    SR_ENTEROCOCCI = (int)(reader.GetValue(11));
+                    SR_ENTEROCOCCI = (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
+                index = 12;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SALINITY = null;
                 }
                 else
                 {
-                    SR_SALINITY = (float)(reader.GetValue(12));
+                    SR_SALINITY = (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
+                index = 13;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_TEMPERATURE = null;
                 }
                 else
                 {
-                    SR_TEMPERATURE = (float)(reader.GetValue(13));
+                    SR_TEMPERATURE = (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
+                index = 14;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_TURBIDITY = null;
                 }
                 else
                 {
-                    SR_TURBIDITY = (float)(reader.GetValue(14));
+                    SR_TURBIDITY = (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
+                index = 15;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_TIDE_CODE = null;
                 }
                 else
                 {
-                    SR_TIDE_CODE = reader.GetValue(15).ToString().Trim();
+                    SR_TIDE_CODE = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
+                index = 16;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SPECIES = null;
                 }
                 else
                 {
-                    SR_SPECIES = reader.GetValue(16).ToString().Trim();
+                    SR_SPECIES = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
+                index = 17;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_SAMPLE_AGENCY = null;
                 }
                 else
                 {
-                    SR_SAMPLE_AGENCY = (int)(Int16)(reader.GetValue(17));
+                    SR_SAMPLE_AGENCY = (int)(Int16)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(18).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(18).ToString()))
+                index = 18;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SR_OBS = null;
                 }
                 else
                 {
-                    SR_OBS = reader.GetValue(18).ToString().Trim();
+                    SR_OBS = reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 19;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Pub = null;
+                }
+                else
+                {
+                    Pub = reader.GetValue(index).ToString().Trim();
                 }
 
 
@@ -5180,6 +5223,7 @@ namespace TempDataTool
                 bcMarineSampleNew.SR_SPECIES = SR_SPECIES;
                 bcMarineSampleNew.SR_SAMPLE_AGENCY = SR_SAMPLE_AGENCY;
                 bcMarineSampleNew.SR_OBS = SR_OBS;
+                bcMarineSampleNew.Pub = Pub;
 
                 bcMarineSampleList.Add(bcMarineSampleNew);
             }
@@ -5212,18 +5256,19 @@ namespace TempDataTool
         {
             List<BCMarineSampleStation> bcMarineSampleStationList = new List<BCMarineSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Station]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Marine_SampSite_Pts]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
 
-            FieldNameList = new List<string>() { "OID", "SS_STATION_CODE",
-                "SS_DESCRIPTION", "SS_LATITUDE_DEGREES", "SS_LATITUDE_MINUTES", "SS_LONGITUDE_DEGREES", "SS_LONGITUDE_MINUTES",
-                "SS_SHELLFISH_SECTOR", "SS_DFO_SUBAREA", "SS_HARVEST_TYPE", "SS_STATUS",
-                "SS_REMOTE_STATUS", "SS_LASTUPDATE", "SS_ENTEREDBY", "LAT", "LON", "METADATA", "DATALINK" };
+            FieldNameList = new List<string>() { "OBJECTID", "SHAPE",
+                "GlobalID", "SS_STATION", "SS_DESCRIP", "SS_SHELLFI", "SS_DFO_SUB",
+                "SS_HARVEST", "SS_STATUS", "SS_REMOTE_", 
+                "SS_ENTERED", "LAT", "LON", "METADATA", "DATALINK", "LatDecMin",
+                "LonDecMin", "Updated", "FSC", "Rec", "Com", "Aqu", "CreateDate", "ModifyDate", "Pub" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -5241,207 +5286,291 @@ namespace TempDataTool
                 Count += 1;
                 Application.DoEvents();
 
-                int? OID = -1;
-                string SS_STATION_CODE = "";
-                string SS_DESCRIPTION = "";
-                float? SS_LATITUDE_DEGREES = -1f;
-                float? SS_LATITUDE_MINUTES = -1f;
-                float? SS_LONGITUDE_DEGREES = -1f;
-                float? SS_LONGITUDE_MINUTES = -1f;
-                string SS_SHELLFISH_SECTOR = "";
-                string SS_DFO_SUBAREA = "";
-                string SS_HARVEST_TYPE = "";
-                string SS_STATUS = "";
-                string SS_REMOTE_STATUS = "";
-                DateTime SS_LASTUPDATE = new DateTime(2050, 1, 1);
-                string SS_ENTEREDBY = "";
-                float? LAT = -1f;
-                float? LON = -1f;
-                string METADATA = "";
-                string DATALINK = "";
+                int? OBJECTID = -1; // 0
+                string SHAPE = null; // 1
+                int? GlobalID = -1; // 2
+                string SS_STATION = ""; // 3
+                string SS_DESCRIP = ""; // 4
+                string SS_SHELLFI = ""; // 5
+                float? SS_DFO_SUB = -1f; // 6
+                string SS_HARVEST = ""; // 7
+                string SS_STATUS = ""; //inactive or active // 8
+                string SS_REMOTE_ = ""; // 9
+                string SS_ENTERED = ""; // 10
+                float? LAT = -1f; // 11
+                float? LON = -1f; // 12
+                string METADATA = ""; // 13
+                string DATALINK = ""; // 14
+                string LatDecMin = ""; // 15
+                string LonDecMin = ""; // 16
+                DateTime? Updated = new DateTime(2050, 1, 1); // 17
+                string FSC = ""; // 18
+                string Rec = ""; // 19
+                string Com = ""; // 20
+                string Aqu = ""; // 21
+                DateTime? CreateDate = new DateTime(2050, 1, 1); // 22
+                DateTime? ModifyDate = new DateTime(2050, 1, 1); // 23 
+                string Pub = ""; // 24
 
-                if (reader.GetValue(0).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(0).ToString()))
+                int index = 0;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    OID = null;
+                    OBJECTID = null;
                 }
                 else
                 {
-                    OID = (int)(reader.GetValue(0));
+                    OBJECTID = null; // (int)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(1).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(1).ToString()))
+                index = 1;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_STATION_CODE = null;
+                    SHAPE = null;
                 }
                 else
                 {
-                    SS_STATION_CODE = reader.GetValue(1).ToString().Trim();
+                    SHAPE = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(2).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(2).ToString()))
+                index = 2;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_DESCRIPTION = null;
+                    GlobalID = null;
                 }
                 else
                 {
-                    SS_DESCRIPTION = reader.GetValue(2).ToString().Trim();
+                    GlobalID = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(3).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(3).ToString()))
+                index = 3;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LATITUDE_DEGREES = null;
+                    SS_STATION = null;
                 }
                 else
                 {
-                    SS_LATITUDE_DEGREES = (float)(double)(reader.GetValue(3));
+                    SS_STATION = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(4).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(4).ToString()))
+                index = 4;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LATITUDE_MINUTES = null;
+                    SS_DESCRIP = null;
                 }
                 else
                 {
-                    SS_LATITUDE_MINUTES = (float)(double)reader.GetValue(4);
+                    SS_DESCRIP = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(5).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(5).ToString()))
+                index = 5;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LONGITUDE_DEGREES = null;
+                    SS_SHELLFI = null;
                 }
                 else
                 {
-                    SS_LONGITUDE_DEGREES = (float)(double)reader.GetValue(5);
+                    SS_SHELLFI = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(6).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(6).ToString()))
+                index = 6;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LONGITUDE_MINUTES = null;
+                    SS_DFO_SUB = null;
                 }
                 else
                 {
-                    SS_LONGITUDE_MINUTES = (float)(double)(reader.GetValue(6));
+                    SS_DFO_SUB = null; // (float)(reader.GetValue(index));
                 }
 
-                if (reader.GetValue(7).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(7).ToString()))
+                index = 7;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_SHELLFISH_SECTOR = null;
+                    SS_HARVEST = null;
                 }
                 else
                 {
-                    SS_SHELLFISH_SECTOR = reader.GetValue(7).ToString().Trim();
+                    SS_HARVEST = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(8).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(8).ToString()))
-                {
-                    SS_DFO_SUBAREA = null;
-                }
-                else
-                {
-                    SS_DFO_SUBAREA = reader.GetValue(8).ToString().Trim();
-                }
-
-                if (reader.GetValue(9).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(9).ToString()))
-                {
-                    SS_HARVEST_TYPE = null;
-                }
-                else
-                {
-                    SS_HARVEST_TYPE = reader.GetValue(9).ToString().Trim();
-                }
-
-                if (reader.GetValue(10).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(10).ToString()))
+                index = 8;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_STATUS = null;
                 }
                 else
                 {
-                    SS_STATUS = reader.GetValue(10).ToString().Trim();
+                    SS_STATUS = reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(11).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(11).ToString()))
+                index = 9;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_REMOTE_STATUS = null;
+                    SS_REMOTE_ = null;
                 }
                 else
                 {
-                    SS_REMOTE_STATUS = reader.GetValue(11).ToString().Trim();
+                    SS_REMOTE_ = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(12).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(12).ToString()))
+                index = 10;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_LASTUPDATE = new DateTime(2050, 1, 1);
+                    SS_ENTERED = null;
                 }
                 else
                 {
-                    SS_LASTUPDATE = (DateTime)(reader.GetValue(12));
+                    SS_ENTERED = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(13).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(13).ToString()))
-                {
-                    SS_ENTEREDBY = null;
-                }
-                else
-                {
-                    SS_ENTEREDBY = reader.GetValue(13).ToString().Trim();
-                }
-
-                if (reader.GetValue(14).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(14).ToString()))
+                index = 11;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LAT = null;
                 }
                 else
                 {
-                    LAT = (float)(double)reader.GetValue(14);
+                    LAT = (float)(double)reader.GetValue(index);
                 }
 
-                if (reader.GetValue(15).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(15).ToString()))
+                index = 12;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LON = null;
                 }
                 else
                 {
-                    LON = (float)(double)reader.GetValue(15);
+                    LON = (float)(double)reader.GetValue(index);
                 }
 
-                if (reader.GetValue(16).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(16).ToString()))
+                index = 13;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     METADATA = null;
                 }
                 else
                 {
-                    METADATA = reader.GetValue(16).ToString().Trim();
+                    METADATA = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                if (reader.GetValue(17).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(17).ToString()))
+                index = 14;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     DATALINK = null;
                 }
                 else
                 {
-                    DATALINK = reader.GetValue(17).ToString().Trim();
+                    DATALINK = null; // reader.GetValue(15).ToString().Trim();
+                }
+
+                index = 15;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    LatDecMin = null;
+                }
+                else
+                {
+                    LatDecMin = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 16;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    LonDecMin = null;
+                }
+                else
+                {
+                    LonDecMin = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 17;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Updated = null; // new DateTime(2050, 1, 1);
+                }
+                else
+                {
+                    Updated = null; // (DateTime)(reader.GetValue(index));
+                }
+
+                index = 18;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    FSC = null; // 
+                }
+                else
+                {
+                    FSC = null; // 
+                }
+
+                index = 19;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Rec = null; // 
+                }
+                else
+                {
+                    Rec = null; // 
+                }
+
+                index = 20;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Com = null; //
+                }
+                else
+                {
+                    Com = null; //
+                }
+
+                index = 21;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Aqu = null; // 
+                }
+                else
+                {
+                    Aqu = null; // 
+                }
+
+                index = 22;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    CreateDate = null;
+                }
+                else
+                {
+                    CreateDate = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 23;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    ModifyDate = null;
+                }
+                else
+                {
+                    ModifyDate = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 24;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Pub = null;
+                }
+                else
+                {
+                    Pub = reader.GetValue(index).ToString().Trim();
                 }
 
 
                 BCMarineSampleStation bcMarineSampleStationNew = new BCMarineSampleStation();
-                bcMarineSampleStationNew.OID = OID;
-                bcMarineSampleStationNew.SS_STATION_CODE = SS_STATION_CODE;
-                bcMarineSampleStationNew.SS_DESCRIPTION = SS_DESCRIPTION;
-                bcMarineSampleStationNew.SS_LATITUDE_DEGREES = SS_LATITUDE_DEGREES;
-                bcMarineSampleStationNew.SS_LATITUDE_MINUTES = SS_LATITUDE_MINUTES;
-                bcMarineSampleStationNew.SS_LONGITUDE_DEGREES = SS_LONGITUDE_DEGREES;
-                bcMarineSampleStationNew.SS_LONGITUDE_MINUTES = SS_LONGITUDE_MINUTES;
-                bcMarineSampleStationNew.SS_SHELLFISH_SECTOR = SS_SHELLFISH_SECTOR;
-                bcMarineSampleStationNew.SS_DFO_SUBAREA = SS_DFO_SUBAREA;
-                bcMarineSampleStationNew.SS_HARVEST_TYPE = SS_HARVEST_TYPE;
+                bcMarineSampleStationNew.SS_STATION = SS_STATION;
+                bcMarineSampleStationNew.SS_DESCRIP = SS_DESCRIP;
+                bcMarineSampleStationNew.SS_SHELLFI = SS_SHELLFI;
                 bcMarineSampleStationNew.SS_STATUS = SS_STATUS;
-                bcMarineSampleStationNew.SS_REMOTE_STATUS = SS_REMOTE_STATUS;
-                bcMarineSampleStationNew.SS_LASTUPDATE = SS_LASTUPDATE;
-                bcMarineSampleStationNew.SS_ENTEREDBY = SS_ENTEREDBY;
                 bcMarineSampleStationNew.LAT = LAT;
                 bcMarineSampleStationNew.LON = LON;
-                bcMarineSampleStationNew.METADATA = METADATA;
-                bcMarineSampleStationNew.DATALINK = DATALINK;
+                bcMarineSampleStationNew.Pub = Pub;
 
                 bcMarineSampleStationList.Add(bcMarineSampleStationNew);
             }

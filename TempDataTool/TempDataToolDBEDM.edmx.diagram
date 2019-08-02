@@ -18,18 +18,18 @@
         <EntityTypeShape EntityType="TempDataToolDBModel.ASGADTide" Width="1.5" PointX="2.75" PointY="14.75" />
         <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSample" Width="1.5" PointX="14.75" PointY="5.75" />
         <EntityTypeShape EntityType="TempDataToolDBModel.BCLandSampleStation" Width="1.5" PointX="14.75" PointY="11.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSample" Width="1.5" PointX="16.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSampleStation" Width="1.5" PointX="4.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCName" Width="1.5" PointX="16.75" PointY="6.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCPolSource" Width="1.5" PointX="6.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCPrecipitation" Width="1.5" PointX="8.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.BCSurvey" Width="1.5" PointX="16.75" PointY="9.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.LocationNameLatLng" Width="1.5" PointX="10.75" PointY="16.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.Nomenclature" Width="1.5" PointX="16.75" PointY="13.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCClimateSite" Width="1.5" PointX="16.75" PointY="17.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSecteurMPol" Width="1.5" PointX="18.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubsectorAssociation" Width="1.5" PointX="0.75" PointY="18.75" />
-        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubSector" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSample" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCMarineSampleStation" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCName" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCPolSource" Width="1.5" PointX="4.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCPrecipitation" Width="1.5" PointX="6.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.BCSurvey" Width="1.5" PointX="16.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.LocationNameLatLng" Width="1.5" PointX="8.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.Nomenclature" Width="1.5" PointX="10.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCClimateSite" Width="1.5" PointX="16.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSecteurMPol" Width="1.5" PointX="16.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubsectorAssociation" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TempDataToolDBModel.QCSubSector" Width="1.5" PointX="16.75" PointY="17.75" />
         <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCOb" Width="1.5" PointX="13" PointY="1" />
         <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavCSite" Width="1.5" PointX="10.75" PointY="1" />
         <EntityTypeShape EntityType="TempDataToolDBModel.SanitaryDavOb" Width="1.5" PointX="8" PointY="6" />
