@@ -4394,7 +4394,7 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Reading]", conn);
@@ -4650,7 +4650,7 @@ namespace TempDataTool
         {
             List<BCLandSampleStation> bcLandSampleStationList = new List<BCLandSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Landbased_SampSite_Pts]", conn);
@@ -4953,7 +4953,7 @@ namespace TempDataTool
         {
             List<BCMarineSample> bcMarineSampleList = new List<BCMarineSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Reading]", conn);
@@ -5256,7 +5256,7 @@ namespace TempDataTool
         {
             List<BCMarineSampleStation> bcMarineSampleStationList = new List<BCMarineSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Marine_SampSite_Pts]", conn);
@@ -5861,7 +5861,7 @@ namespace TempDataTool
         {
             List<BCSurvey> bcSurveyList = new List<BCSurvey>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Survey]", conn);
