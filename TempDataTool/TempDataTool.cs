@@ -2113,8 +2113,16 @@ namespace TempDataTool
                         break;
                     case "BCMarine_Sample_Readings":
                         {
-                            lblCountInDB.Text = (from c in dbTD.BCMarineSamples
-                                                 select c).Count().ToString();
+                            try
+                            {
+                                lblCountInDB.Text = (from c in dbTD.BCMarineSamples
+                                                     select c).Count().ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                string exStr = ex.Message;
+                            }
+                           
                         }
                         break;
                     case "BCMarine_Sample_Stations":
@@ -4394,7 +4402,7 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Reading]", conn);
@@ -4650,7 +4658,7 @@ namespace TempDataTool
         {
             List<BCLandSampleStation> bcLandSampleStationList = new List<BCLandSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Landbased_SampSite_Pts]", conn);
@@ -4953,10 +4961,10 @@ namespace TempDataTool
         {
             List<BCMarineSample> bcMarineSampleList = new List<BCMarineSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine_Sample_Reading]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Marine Sample Reading]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
@@ -4964,7 +4972,7 @@ namespace TempDataTool
             FieldNameList = new List<string>() { "OID", "SR_SURVEY", "SR_STATION_CODE",
                 "SR_ANALYSIS_TYPE", "SR_READING_DATE", "SR_READING_TIME", "SR_SAMPLE_TYPE", "SR_SAMPLE_DEPTH",
                 "SR_FECAL_COLIFORM_IND", "SR_FECAL_COLIFORM", "SR_ENTEROCOCCI_IND", "SR_ENTEROCOCCI",
-                "SR_SALINITY", "SR_TEMPERATURE", "SR_TURBIDITY", "SR_TIDE_CODE", "SR_SPECIES", "SR_SAMPLE_AGENCY", "SR_OBS", "Pub" };
+                "SR_SALINITY", "SR_TEMPERATURE", "SR_TURBIDITY", "SR_TIDE_CODE", "SR_SPECIES", "SR_SAMPLE_AGENCY", "SR_OBS" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -5193,15 +5201,15 @@ namespace TempDataTool
                     SR_OBS = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 19;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    Pub = null;
-                }
-                else
-                {
-                    Pub = reader.GetValue(index).ToString().Trim();
-                }
+                //index = 19;
+                //if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                //{
+                //    Pub = null;
+                //}
+                //else
+                //{
+                //    Pub = reader.GetValue(index).ToString().Trim();
+                //}
 
 
                 BCMarineSample bcMarineSampleNew = new BCMarineSample();
@@ -5223,7 +5231,7 @@ namespace TempDataTool
                 bcMarineSampleNew.SR_SPECIES = SR_SPECIES;
                 bcMarineSampleNew.SR_SAMPLE_AGENCY = SR_SAMPLE_AGENCY;
                 bcMarineSampleNew.SR_OBS = SR_OBS;
-                bcMarineSampleNew.Pub = Pub;
+                bcMarineSampleNew.Pub = "";
 
                 bcMarineSampleList.Add(bcMarineSampleNew);
             }
@@ -5256,7 +5264,7 @@ namespace TempDataTool
         {
             List<BCMarineSampleStation> bcMarineSampleStationList = new List<BCMarineSampleStation>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Marine_SampSite_Pts]", conn);
@@ -5264,11 +5272,11 @@ namespace TempDataTool
 
             List<string> FieldNameList = new List<string>();
 
-            FieldNameList = new List<string>() { "OBJECTID", "SHAPE",
+            FieldNameList = new List<string>() { "OBJECTID", 
                 "GlobalID", "SS_STATION", "SS_DESCRIP", "SS_SHELLFI", "SS_DFO_SUB",
                 "SS_HARVEST", "SS_STATUS", "SS_REMOTE_", 
                 "SS_ENTERED", "LAT", "LON", "METADATA", "DATALINK", "LatDecMin",
-                "LonDecMin", "Updated", "FSC", "Rec", "Com", "Aqu", "CreateDate", "ModifyDate", "Pub" };
+                "LonDecMin", "Updated", "FSC", "Rec", "Com", "Aqu", "CreateDate", "ModifyDate", "Pub", "Sector" };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -5287,30 +5295,31 @@ namespace TempDataTool
                 Application.DoEvents();
 
                 int? OBJECTID = -1; // 0
-                string SHAPE = null; // 1
-                int? GlobalID = -1; // 2
-                string SS_STATION = ""; // 3
-                string SS_DESCRIP = ""; // 4
-                string SS_SHELLFI = ""; // 5
-                float? SS_DFO_SUB = -1f; // 6
-                string SS_HARVEST = ""; // 7
-                string SS_STATUS = ""; //inactive or active // 8
-                string SS_REMOTE_ = ""; // 9
-                string SS_ENTERED = ""; // 10
-                float? LAT = -1f; // 11
-                float? LON = -1f; // 12
-                string METADATA = ""; // 13
-                string DATALINK = ""; // 14
-                string LatDecMin = ""; // 15
-                string LonDecMin = ""; // 16
-                DateTime? Updated = new DateTime(2050, 1, 1); // 17
-                string FSC = ""; // 18
-                string Rec = ""; // 19
-                string Com = ""; // 20
-                string Aqu = ""; // 21
-                DateTime? CreateDate = new DateTime(2050, 1, 1); // 22
-                DateTime? ModifyDate = new DateTime(2050, 1, 1); // 23 
-                string Pub = ""; // 24
+                //string SHAPE = null; // 1
+                int? GlobalID = -1; // 1
+                string SS_STATION = ""; // 2
+                string SS_DESCRIP = ""; // 3
+                string SS_SHELLFI = ""; // 4
+                float? SS_DFO_SUB = -1f; // 5
+                string SS_HARVEST = ""; // 6
+                string SS_STATUS = ""; //inactive or active // 7
+                string SS_REMOTE_ = ""; // 8
+                string SS_ENTERED = ""; // 9
+                float? LAT = -1f; // 10
+                float? LON = -1f; // 11
+                string METADATA = ""; // 12
+                string DATALINK = ""; // 13
+                string LatDecMin = ""; // 14
+                string LonDecMin = ""; // 15
+                DateTime? Updated = new DateTime(2050, 1, 1); // 16
+                string FSC = ""; // 17
+                string Rec = ""; // 18
+                string Com = ""; // 19
+                string Aqu = ""; // 20
+                DateTime? CreateDate = new DateTime(2050, 1, 1); // 21
+                DateTime? ModifyDate = new DateTime(2050, 1, 1); // 22 
+                string Pub = ""; // 23
+                string Sector = ""; // 24
 
                 int index = 0;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
@@ -5322,17 +5331,17 @@ namespace TempDataTool
                     OBJECTID = null; // (int)(reader.GetValue(index));
                 }
 
-                index = 1;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    SHAPE = null;
-                }
-                else
-                {
-                    SHAPE = null; // reader.GetValue(index).ToString().Trim();
-                }
+                //index = 1;
+                //if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                //{
+                //    SHAPE = null;
+                //}
+                //else
+                //{
+                //    SHAPE = null; // reader.GetValue(index).ToString().Trim();
+                //}
 
-                index = 2;
+                index = 1;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     GlobalID = null;
@@ -5342,7 +5351,7 @@ namespace TempDataTool
                     GlobalID = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 3;
+                index = 2;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_STATION = null;
@@ -5352,7 +5361,7 @@ namespace TempDataTool
                     SS_STATION = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 4;
+                index = 3;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_DESCRIP = null;
@@ -5362,7 +5371,7 @@ namespace TempDataTool
                     SS_DESCRIP = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 5;
+                index = 4;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_SHELLFI = null;
@@ -5372,7 +5381,7 @@ namespace TempDataTool
                     SS_SHELLFI = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 6;
+                index = 5;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_DFO_SUB = null;
@@ -5382,7 +5391,7 @@ namespace TempDataTool
                     SS_DFO_SUB = null; // (float)(reader.GetValue(index));
                 }
 
-                index = 7;
+                index = 6;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_HARVEST = null;
@@ -5392,7 +5401,7 @@ namespace TempDataTool
                     SS_HARVEST = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 8;
+                index = 7;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_STATUS = null;
@@ -5402,7 +5411,7 @@ namespace TempDataTool
                     SS_STATUS = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 9;
+                index = 8;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_REMOTE_ = null;
@@ -5412,7 +5421,7 @@ namespace TempDataTool
                     SS_REMOTE_ = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 10;
+                index = 9;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_ENTERED = null;
@@ -5422,7 +5431,7 @@ namespace TempDataTool
                     SS_ENTERED = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 11;
+                index = 10;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LAT = null;
@@ -5432,7 +5441,7 @@ namespace TempDataTool
                     LAT = (float)(double)reader.GetValue(index);
                 }
 
-                index = 12;
+                index = 11;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LON = null;
@@ -5442,7 +5451,7 @@ namespace TempDataTool
                     LON = (float)(double)reader.GetValue(index);
                 }
 
-                index = 13;
+                index = 12;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     METADATA = null;
@@ -5452,7 +5461,7 @@ namespace TempDataTool
                     METADATA = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 14;
+                index = 13;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     DATALINK = null;
@@ -5462,7 +5471,7 @@ namespace TempDataTool
                     DATALINK = null; // reader.GetValue(15).ToString().Trim();
                 }
 
-                index = 15;
+                index = 14;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LatDecMin = null;
@@ -5472,7 +5481,7 @@ namespace TempDataTool
                     LatDecMin = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 16;
+                index = 15;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LonDecMin = null;
@@ -5482,7 +5491,7 @@ namespace TempDataTool
                     LonDecMin = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 17;
+                index = 16;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     Updated = null; // new DateTime(2050, 1, 1);
@@ -5492,7 +5501,7 @@ namespace TempDataTool
                     Updated = null; // (DateTime)(reader.GetValue(index));
                 }
 
-                index = 18;
+                index = 17;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     FSC = null; // 
@@ -5500,39 +5509,39 @@ namespace TempDataTool
                 else
                 {
                     FSC = null; // 
+                }
+
+                index = 18;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Rec = null; // 
+                }
+                else
+                {
+                    Rec = null; // 
                 }
 
                 index = 19;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    Rec = null; // 
+                    Com = null; //
                 }
                 else
                 {
-                    Rec = null; // 
+                    Com = null; //
                 }
 
                 index = 20;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    Com = null; //
+                    Aqu = null; // 
                 }
                 else
                 {
-                    Com = null; //
+                    Aqu = null; // 
                 }
 
                 index = 21;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    Aqu = null; // 
-                }
-                else
-                {
-                    Aqu = null; // 
-                }
-
-                index = 22;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     CreateDate = null;
@@ -5542,7 +5551,7 @@ namespace TempDataTool
                     CreateDate = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 23;
+                index = 22;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     ModifyDate = null;
@@ -5552,7 +5561,7 @@ namespace TempDataTool
                     ModifyDate = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 24;
+                index = 23;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     Pub = null;
@@ -5562,6 +5571,15 @@ namespace TempDataTool
                     Pub = reader.GetValue(index).ToString().Trim();
                 }
 
+                index = 24;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    Sector = null;
+                }
+                else
+                {
+                    Sector = reader.GetValue(index).ToString().Trim();
+                }
 
                 BCMarineSampleStation bcMarineSampleStationNew = new BCMarineSampleStation();
                 bcMarineSampleStationNew.SS_STATION = SS_STATION;
@@ -5861,7 +5879,7 @@ namespace TempDataTool
         {
             List<BCSurvey> bcSurveyList = new List<BCSurvey>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20190705_rev1.mdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb");
             conn.Open();
 
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Survey]", conn);
