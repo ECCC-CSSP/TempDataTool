@@ -4402,10 +4402,10 @@ namespace TempDataTool
         {
             List<BCLandSample> bcLandSampleList = new List<BCLandSample>();
 
-            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.mdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
+            OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Reading]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land Based Sample Reading]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
@@ -4598,15 +4598,15 @@ namespace TempDataTool
                     SR_OLD_KEY = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 15;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    Pub = null;
-                }
-                else
-                {
-                    Pub = reader.GetValue(index).ToString().Trim();
-                }
+                //index = 15;
+                //if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                //{
+                //    Pub = null;
+                //}
+                //else
+                //{
+                //    Pub = reader.GetValue(index).ToString().Trim();
+                //}
 
 
                 BCLandSample bcLandSampleNew = new BCLandSample();
@@ -4661,16 +4661,35 @@ namespace TempDataTool
             OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OleDb.12.0;Data Source=E:\CSSP\BC_Data\CSSP_Pacific_WQ_Data_20230214.accdb"); // CSSP_Pacific_WQ_Data_20180219.accdb");
             conn.Open();
 
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [STN_EC_Landbased_SampSite_Pts]", conn);
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM [Land_Based_Sample_Station]", conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> FieldNameList = new List<string>();
 
-            FieldNameList = new List<string>() { "OBJECTID", "Shape",
-                "GlobalID", "SS_STATION", "SS_DESCRIP", "SS_SHELLFI", "SS_DFO_SUB",
-                "SS_HARVEST", "SS_STATUS", "SS_REMOTE_", "SS_LASTUPD",
-                "SS_ENTERED", "LAT", "LON", "METADATA", "DATALINK", "LatDecMin",
-                "LonDecMin", "CreateDate", "ModifyDate", "Pub" };
+            FieldNameList = new List<string>() { 
+                "OID", 
+                "SS_STATION_CODE",
+                "SS_DESCRIPTION",
+                "SS_LATITUDE_DEGREES",
+                "SS_LATITUDE_MINUTES",
+                "SS_LONGITUDE_DEGREES",
+                "SS_LONGITUDE_MINUTES",
+                "SS_SHELLFISH_SECTOR",
+                "SS_DFO_SUBAREA",
+                "SS_HARVEST_TYPE",
+                "SS_STATUS",
+                "SS_REMOTE_STATUS",
+                "SS_LASTUPDATE",
+                "SS_ENTEREDBY",
+                "LAT", 
+                "LON", 
+                "METADATA", 
+                "DATALINK",
+                "SS_STATION_TYPE",
+                "OLD_KEY",
+                "OLD_KEY2",
+                "QA",
+            };
             for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) != FieldNameList[i])
@@ -4688,109 +4707,131 @@ namespace TempDataTool
                 Count += 1;
                 Application.DoEvents();
 
-                int? OBJECTID = -1; // 0
-                string Shape = null; // 1
-                int? GlobalID = -1; // 2
-                string SS_STATION = ""; // 3
-                string SS_DESCRIP = ""; // 4
-                string SS_SHELLFI = ""; // 5
-                float? SS_DFO_SUB = -1f; // 6
-                string SS_HARVEST = ""; // 7
-                string SS_STATUS = ""; //inactive or active // 8
-                string SS_REMOTE_ = ""; // 9
-                DateTime? SS_LASTUPD = new DateTime(2050, 1, 1); // 10
-                string SS_ENTERED = ""; // 11
-                float? LAT = -1f; // 12
-                float? LON = -1f; // 13
-                string METADATA = ""; // 14
-                string DATALINK = ""; // 15
-                string LatDecMin = ""; // 16
-                string LonDecMin = ""; // 17
-                DateTime? CreateDate = new DateTime(2050, 1, 1); // 18
-                DateTime? ModifyDate = new DateTime(2050, 1, 1); // 19 
-                string Pub = ""; // 20
+                int? OID = -1; // 0
+                string SS_STATION_CODE = null; // 1
+                string SS_DESCRIPTION = null; // 2
+                float? SS_LATITUDE_DEGREES = null; // 3
+                float? SS_LATITUDE_MINUTES = null; // 4
+                float? SS_LONGITUDE_DEGREES = null; // 5
+                float? SS_LONGITUDE_MINUTES = null; // 6
+                string SS_SHELLFISH_SECTOR = ""; // 7
+                string SS_DFO_SUBAREA = ""; //inactive or active // 8
+                string SS_HARVEST_TYPE = ""; // 9
+                string SS_STATUS = ""; // 10
+                string SS_REMOTE_STATUS = ""; // 11
+                DateTime? SS_LASTUPDATE = new DateTime(1900, 1, 1); // 12
+                string SS_ENTEREDBY = ""; //13
+                float? LAT = -1f; // 14
+                float? LON = -1f; // 15
+                string METADATA = ""; // 16
+                string DATALINK = ""; // 17
+                string SS_STATION_TYPE = ""; // 18
+                string OLD_KEY = ""; // 19
+                string OLD_KEY2 = ""; // 20
+                string QA = ""; // 21
+                string Pub = "";
 
                 int index = 0;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    OBJECTID = null;
+                    OID = null;
                 }
                 else
                 {
-                    OBJECTID = null; // (int)(reader.GetValue(index));
+                    OID = null; // (int)(reader.GetValue(index));
                 }
 
                 index = 1;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    Shape = null;
+                    SS_STATION_CODE = null;
                 }
                 else
                 {
-                    Shape = null; // reader.GetValue(index).ToString().Trim();
+                    SS_STATION_CODE = reader.GetValue(index).ToString().Trim(); // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 2;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    GlobalID = null;
+                    SS_DESCRIPTION = null;
                 }
                 else
                 {
-                    GlobalID = null; // reader.GetValue(index).ToString().Trim();
+                    SS_DESCRIPTION = reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 3;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_STATION = null;
+                    SS_LATITUDE_DEGREES = null;
                 }
                 else
                 {
-                    SS_STATION = reader.GetValue(index).ToString().Trim();
+                    SS_LATITUDE_DEGREES = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 4;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_DESCRIP = null;
+                    SS_LATITUDE_MINUTES = null;
                 }
                 else
                 {
-                    SS_DESCRIP = reader.GetValue(index).ToString().Trim();
+                    SS_LATITUDE_MINUTES = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 5;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_SHELLFI = null;
+                    SS_LONGITUDE_DEGREES = null;
                 }
                 else
                 {
-                    SS_SHELLFI = reader.GetValue(index).ToString().Trim();
+                    SS_LONGITUDE_DEGREES = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 6;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_DFO_SUB = null;
+                    SS_LONGITUDE_MINUTES = null;
                 }
                 else
                 {
-                    SS_DFO_SUB = null; // (float)(reader.GetValue(index));
+                    SS_LONGITUDE_MINUTES = null; // (float)(reader.GetValue(index));
                 }
 
                 index = 7;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_HARVEST = null;
+                    SS_SHELLFISH_SECTOR = null;
                 }
                 else
                 {
-                    SS_HARVEST = null; // reader.GetValue(index).ToString().Trim();
+                    SS_SHELLFISH_SECTOR = reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 8;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    SS_DFO_SUBAREA = null;
+                }
+                else
+                {
+                    SS_DFO_SUBAREA = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 9;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    SS_HARVEST_TYPE = null;
+                }
+                else
+                {
+                    SS_HARVEST_TYPE = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 10;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     SS_STATUS = null;
@@ -4800,37 +4841,37 @@ namespace TempDataTool
                     SS_STATUS = reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 9;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    SS_REMOTE_ = null;
-                }
-                else
-                {
-                    SS_REMOTE_ = null; // reader.GetValue(index).ToString().Trim();
-                }
-
-                index = 10;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    SS_LASTUPD = null; // new DateTime(2050, 1, 1);
-                }
-                else
-                {
-                    SS_LASTUPD = null; // (DateTime)(reader.GetValue(index));
-                }
-
                 index = 11;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    SS_ENTERED = null;
+                    SS_REMOTE_STATUS = null;
                 }
                 else
                 {
-                    SS_ENTERED = null; // reader.GetValue(index).ToString().Trim();
+                    SS_REMOTE_STATUS = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 12;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    SS_LASTUPDATE = null; // new DateTime(2050, 1, 1);
+                }
+                else
+                {
+                    SS_LASTUPDATE = null; // (DateTime)(reader.GetValue(index));
+                }
+
+                index = 13;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    SS_ENTEREDBY = null;
+                }
+                else
+                {
+                    SS_ENTEREDBY = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                index = 14;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LAT = null;
@@ -4840,7 +4881,7 @@ namespace TempDataTool
                     LAT = (float)(double)reader.GetValue(index);
                 }
 
-                index = 13;
+                index = 15;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     LON = null;
@@ -4850,7 +4891,7 @@ namespace TempDataTool
                     LON = (float)(double)reader.GetValue(index);
                 }
 
-                index = 14;
+                index = 16;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     METADATA = null;
@@ -4860,7 +4901,7 @@ namespace TempDataTool
                     METADATA = null; // reader.GetValue(index).ToString().Trim();
                 }
 
-                index = 15;
+                index = 17;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
                     DATALINK = null;
@@ -4870,61 +4911,61 @@ namespace TempDataTool
                     DATALINK = null; // reader.GetValue(15).ToString().Trim();
                 }
 
-                index = 16;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    LatDecMin = null;
-                }
-                else
-                {
-                    LatDecMin = null; // reader.GetValue(index).ToString().Trim();
-                }
-
-                index = 17;
-                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
-                {
-                    LonDecMin = null;
-                }
-                else
-                {
-                    LonDecMin = null; // reader.GetValue(index).ToString().Trim();
-                }
-
                 index = 18;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    CreateDate = null;
+                    SS_STATION_TYPE = null;
                 }
                 else
                 {
-                    CreateDate = null; // reader.GetValue(index).ToString().Trim();
+                    SS_STATION_TYPE = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 19;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    ModifyDate = null;
+                    OLD_KEY = null;
                 }
                 else
                 {
-                    ModifyDate = null; // reader.GetValue(index).ToString().Trim();
+                    OLD_KEY = null; // reader.GetValue(index).ToString().Trim();
                 }
 
                 index = 20;
                 if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
                 {
-                    Pub = null;
+                    OLD_KEY2 = null;
                 }
                 else
                 {
-                    Pub = reader.GetValue(index).ToString().Trim();
+                    OLD_KEY2 = null; // reader.GetValue(index).ToString().Trim();
                 }
+
+                index = 21;
+                if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                {
+                    QA = null;
+                }
+                else
+                {
+                    QA = null; // reader.GetValue(index).ToString().Trim();
+                }
+
+                //index = 20;
+                //if (reader.GetValue(index).GetType() == typeof(DBNull) || string.IsNullOrEmpty(reader.GetValue(index).ToString()))
+                //{
+                //    Pub = null;
+                //}
+                //else
+                //{
+                //    Pub = reader.GetValue(index).ToString().Trim();
+                //}
 
 
                 BCLandSampleStation bcLandSampleStationNew = new BCLandSampleStation();
-                bcLandSampleStationNew.SS_STATION = SS_STATION;
-                bcLandSampleStationNew.SS_DESCRIP = SS_DESCRIP;
-                bcLandSampleStationNew.SS_SHELLFI = SS_SHELLFI;
+                bcLandSampleStationNew.SS_STATION = SS_STATION_CODE;
+                bcLandSampleStationNew.SS_DESCRIP = SS_DESCRIPTION;
+                bcLandSampleStationNew.SS_SHELLFI = SS_SHELLFISH_SECTOR;
                 bcLandSampleStationNew.SS_STATUS = SS_STATUS;
                 bcLandSampleStationNew.LAT = LAT;
                 bcLandSampleStationNew.LON = LON;
